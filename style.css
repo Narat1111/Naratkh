@@ -1,0 +1,335 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    margin: 0;
+    background-color: #f0f0f5; /* Light grey background for the overall page */
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px; /* Adjusted padding */
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #e0e0e0; /* Finer line */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04); /* Softer shadow */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.back-icon {
+    font-size: 26px; /* Larger icon for back */
+    color: #007aff; /* iOS blue */
+    margin-right: 8px; /* Space between back and logo */
+    font-weight: 300; /* Lighter weight for icon */
+}
+
+.store-logo {
+    width: 32px; /* Slightly larger logo */
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.store-name {
+    font-size: 21px; /* Closer to screenshot font size */
+    font-weight: 600; /* Semi-bold */
+    color: #000;
+}
+
+.header-right .header-icon {
+    font-size: 20px; /* Slightly smaller icons */
+    margin-left: 12px;
+    color: #007aff;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    padding: 0 15px; /* Padding for the main sections, not the whole content */
+}
+
+/* Section Blocks (general styling for distinct sections) */
+.section-block {
+    background-color: #ffffff;
+    border-radius: 12px; /* Rounded corners for blocks */
+    margin-top: 20px; /* Space between blocks */
+    padding: 15px; /* Inner padding for blocks */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* Subtle shadow for distinct blocks */
+}
+
+.section-title-large {
+    font-size: 22px; /* Large title for Esign Bypass Revoke */
+    font-weight: 700; /* Bold */
+    color: #000;
+    margin-bottom: 15px;
+    text-align: center; /* Centered as in the screenshot */
+}
+
+.section-title-normal {
+    font-size: 18px; /* Smaller title for Featured */
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 15px;
+    padding-left: 5px; /* Align with app list content */
+}
+
+/* Button Grid for DNS, Certificate, Telegram */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid */
+    gap: 10px; /* Space between grid items */
+    margin-top: 15px; /* Space from title */
+}
+
+.grid-button {
+    display: flex;
+    flex-direction: column; /* Icon and text stacked */
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7; /* Lighter background for these buttons */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-decoration: none;
+    color: #000; /* Black text */
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.grid-button:hover {
+    background-color: #e8e8e8;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+
+/* Styling for circular button icons (DNS, Cert, Telegram) */
+.button-icon {
+    width: 40px; /* Size of the icon container */
+    height: 40px;
+    border-radius: 50%; /* Makes the container circular */
+    margin-bottom: 8px; /* Space between icon and text */
+    overflow: hidden; /* Ensures image respects the circle shape */
+    display: flex; /* To center the image within the container */
+    justify-content: center;
+    align-items: center;
+}
+
+.button-icon img {
+    width: 100%; /* Image fills the container */
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+    border-radius: 50%; /* Ensures the image itself is circular within the container */
+    display: block; /* Remove extra space below image */
+}
+
+
+/* Banner Section */
+.banner-section {
+    margin-top: 20px; /* Space from previous section */
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures image respects border-radius */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #e0b0ff; /* Fallback background color if image fails to load */
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    display: block; /* Removes extra space below image */
+    border-radius: 12px; /* Matches parent border-radius */
+}
+
+.banner-text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); /* Gradient overlay */
+    padding: 20px;
+    color: #ffffff;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.banner-text-overlay p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.banner-text-overlay h2 {
+    font-size: 28px;
+    margin: 5px 0 15px 0; /* Space below h2 */
+}
+
+.telegram-channel-button {
+    display: inline-block;
+    background-color: #007aff; /* iOS blue button for telegram */
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.telegram-channel-button:hover {
+    background-color: #0056b3;
+}
+
+/* App List (Featured Section) */
+.app-list {
+    margin-top: 15px; /* Space from Featured title */
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0; /* Vertical padding only, horiz padding from parent */
+    border-bottom: 0.5px solid #f0f0f0; /* Finer separator */
+}
+
+.app-item:last-child {
+    border-bottom: none;
+}
+
+/* --- MODIFIED: Styling for app icons (Esign, Ksign, TrollStore) --- */
+.app-icon {
+    width: 58px; /* Size of the icon container */
+    height: 58px;
+    border-radius: 12px; /* Rounded corners for the container */
+    overflow: hidden; /* Ensures image respects the rounded corners */
+    display: flex; /* To center the image within the container */
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    /* Removed background-color, font-size, font-weight, color as images will fill it */
+}
+
+.app-icon img {
+    width: 100%; /* Image fills the container */
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+    border-radius: 12px; /* Ensures the image itself is rounded within the container */
+    display: block; /* Remove extra space below image */
+}
+/* --- END MODIFIED --- */
+
+.app-details {
+    flex-grow: 1;
+}
+
+.app-name {
+    font-size: 16px; /* Slightly smaller */
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.verified-icon {
+    color: #34c759; /* Green checkmark */
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.app-developer {
+    font-size: 13px; /* Smaller font */
+    color: #8e8e93;
+    margin-top: 2px;
+}
+
+.install-button {
+    background-color: #e5e5ea; /* Light grey background */
+    color: #007aff; /* iOS blue */
+    padding: 7px 18px; /* Adjusted padding */
+    border-radius: 18px; /* More rounded pill shape */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600; /* Bolder text */
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.install-button:hover {
+    background-color: #d1d1d6;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 13px;
+    color: #8e8e93;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .header {
+        padding: 8px 10px;
+    }
+    .store-name {
+        font-size: 19px;
+    }
+    .store-logo {
+        width: 28px;
+        height: 28px;
+    }
+    .header-right .header-icon {
+        font-size: 18px;
+        margin-left: 10px;
+    }
+    .main-content {
+        padding: 0 10px;
+    }
+    .section-block {
+        padding: 12px;
+    }
+    .section-title-large {
+        font-size: 20px;
+    }
+    .grid-button {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+    .button-icon {
+        width: 35px;
+        height: 35px;
+    }
+    .banner-text-overlay h2 {
+        font-size: 24px;
+    }
+    .telegram-channel-button {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+    .app-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .app-name {
+        font-size: 15px;
+    }
+    .app-developer {
+        font-size: 12px;
+    }
+    .install-button {
+        padding: 6px 15px;
+        font-size: 13px;
+    }
+}
