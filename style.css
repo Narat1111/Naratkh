@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #0a0f1c;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+header.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  z-index: 2;
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  color: #00ccff;
+  text-shadow: 0 0 10px #00ccff;
+}
+
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  color: silver;
+}
+
+.btn-glow {
+  padding: 0.8rem 1.5rem;
+  color: white;
+  background: linear-gradient(90deg, #007cf0, #00dfd8);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 0 15px #00ccff;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-glow:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ccff;
+}
+
+canvas#bg-animation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.products-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.products-section h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #00ccff;
+  text-shadow: 0 0 5px #00ccff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-card {
+  padding: 2rem;
+  border: 1px solid #00ccff;
+  border-radius: 12px;
+  background: rgba(10, 15, 28, 0.6);
+  box-shadow: 0 0 15px rgba(0, 204, 255, 0.3);
+  font-size: 1rem;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px #00ccff;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #070b14;
+  color: silver;
+  font-size: 0.9rem;
+}
