@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaratStore</title>
+    <style>
+        /* Base Styles */
+        :root {
+            --deep-blue: #0a0a2a;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #b300ff;
+            --dark-bg: #050510;
+            --ui-glow: 0 0 10px rgba(0, 240, 255, 0.7);
+            --text-glow: 0 0 8px rgba(0, 240, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--deep-blue) 70%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* UI Frame */
+        .ui-frame {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: var(--ui-glow);
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .ui-frame::before, .ui-frame::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: var(--ui-glow);
+        }
+
+        .ui-frame::before {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .ui-frame::after {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(10, 10, 42, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: var(--text-glow);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--neon-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: var(--text-glow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--neon-cyan);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icons i {
+            font-size: 1.3rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icons i:hover {
+            color: var(--neon-cyan);
+            text-shadow: var(--text-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(5, 5, 16, 0.3), var(--deep-blue)),
+                        url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            z-index: -1;
+            animation: panBackground 30s linear infinite;
+        }
+
+        @keyframes panBackground {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .hero-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--neon-cyan);
+            background: linear-gradient(to right, white, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-cyan);
+            text-shadow: var(--text-glow);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Featured Games */
+        .featured {
+            padding: 60px 40px;
+            background: rgba(5, 5, 16, 0.5);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            text-shadow: var(--text-glow);
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-header h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 30px;
+            background: var(--neon-cyan);
+            box-shadow: var(--ui-glow);
+        }
+
+        .view-all {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            text-shadow: var(--text-glow);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: rgba(10, 10, 42, 0.5);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 240, 255, 0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 60%, rgba(0, 240, 255, 0.05));
+            pointer-events: none;
+        }
+
+        .game-image {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .game-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(10, 10, 42, 0.9), transparent);
+        }
+
+        .game-info {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .game-genre {
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .game-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .discount {
+            background: var(--neon-purple);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .add-to-cart {
+            background: var(--neon-cyan);
+            color: var(--deep-blue);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none; /* added for the anchor tag */
+            display: inline-block; /* added for the anchor tag */
+        }
+
+        .add-to-cart:hover {
+            background: white;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 60px 40px;
+            background: rgba(5, 5, 16, 0.3);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: rgba(10, 10, 42, 0.5);
+            border-radius: 5px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none; /* added for the anchor tag */
+            color: inherit; /* added for the anchor tag */
+            display: block; /* added for the anchor tag */
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent 45%,
+                rgba(0, 240, 255, 0.1) 50%,
+                transparent 55%
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .category-card:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+
+        .category-icon img {
+            width: 60px; /* Set image width */
+            height: 60px; /* Set image height */
+            margin-bottom: 15px; /* Spacing between icon and title */
+            filter: drop-shadow(0 0 8px var(--neon-cyan));
+            transition: filter 0.3s ease;
+        }
+
+        .category-card:hover .category-icon img {
+            filter: drop-shadow(0 0 12px var(--neon-cyan));
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 5, 16, 0.8);
+            padding: 40px;
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--neon-cyan);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--neon-cyan);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Holographic Elements */
+        .holographic {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 70%);
+            filter: blur(20px);
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .holographic:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .holographic:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+            width: 200px;
+            height: 200px;
+        }
+
+        .holographic:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            animation-delay: 4s;
+            width: 250px;
+            height: 250px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Glowing Grid Lines */
+        .grid-line {
+            position: absolute;
+            background: rgba(0, 240, 255, 0.05);
+            z-index: -1;
+        }
+
+        .grid-line.horizontal {
+            width: 100%;
+            height: 1px;
+            left: 0;
+            box-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+        }
+
+        .grid-line.vertical {
+            width: 1px;
+            height: 100%;
+            top: 0;
+            box-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="https://i.imgur.com/EaDFetX.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/EaDFetX.png">
+</head>
+<body>
+    <div class="ui-frame"></div>
+
+    <div class="grid-line horizontal" style="top: 25%;"></div>
+    <div class="grid-line horizontal" style="top: 50%;"></div>
+    <div class="grid-line horizontal" style="top: 75%;"></div>
+    <div class="grid-line vertical" style="left: 25%;"></div>
+    <div class="grid-line vertical" style="left: 50%;"></div>
+    <div class="grid-line vertical" style="left: 75%;"></div>
+
+    <div class="holographic"></div>
+    <div class="holographic"></div>
+    <div class="holographic"></div>
+
+    <nav>
+        <div class="logo">NARAT<span>STORE</span></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Store</a>
+            <a href="#">New Releases</a>
+            <a href="#">Deals</a>
+            <a href="#">Community</a>
+        </div>
+        <div class="nav-icons">
+        
+            <i class="fas fa-user"></i>
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Welcome to NaratStore</h1>
+            <p>Hello everyone my name is narat.</p>
+            <a href="#" class="cta-button">SHOP NOW</a>
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="section-header">
+            <h2>APP PREMIUM</h2>
+            <a href="#" class="view-all">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="games-grid">
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://i.imgur.com/gomVM73.png');"></div>
+                <div class="game-info">
+                    <h3 class="game-title">ESign</h3>
+                    <span class="game-genre">Promotion</span>
+                    <div class="game-price">
+                        <div>
+                            <span class="price">$14</span>
+                            <span class="discount">-20%</span>
+                        </div>
+                        <a href="https://t.me/Naratkh168" class="add-to-cart">BUY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://i.imgur.com/y5mkj7o.png');"></div>
+                <div class="game-info">
+                    <h3 class="game-title">Gbox</h3>
+                    <span class="game-genre">Promotion</span>
+                    <div class="game-price">
+                        <div>
+                            <span class="price">$4</span>
+                                    
+                                      <span class="discount">-10%</span>
+                        </div>
+                        <a href="https://t.me/Naratkh168" class="add-to-cart">BUY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://i.imgur.com/i86DTGn.png');"></div>
+                <div class="game-info">
+                    <h3 class="game-title">Mod FreeFire</h3>
+                    <span class="game-genre">Promotion</span>
+                    <div class="game-price">
+                        <div>
+                            <span class="price">$25</span>
+                            <span class="discount">-5%</span>
+                        </div>
+                        <a href="https://t.me/Naratkh168" class="add-to-cart">BUY</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-card">
+                <div class="game-image" style="background-image: url('https://i.imgur.com/joqWoqE.png');"></div>
+                <div class="game-info">
+                    <h3 class="game-title">YouTube premium</h3>
+                    <span class="game-genre">Promotion</span>
+                    <div class="game-price">
+                        <div>
+                            <span class="price">$1.25</span>
+                             <span class="discount">-5%</span>
+                        </div>
+                        <a href="https://t.me/Naratkh168" class="add-to-cart">BUY</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories">
+        <div class="section-header">
+            <h2>APP FREE</h2>
+        </div>
+        <div class="categories-grid">
+            <a href="https://e-sign-two.vercel.app/" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/JAF7TpB.png" alt="Sci-Fi Icon">
+                </div>
+                <h3 class="category-title">ESign</h3>
+            </a>
+
+            <a href="" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/lTsgRAG.png" alt="Racing Icon">
+                </div>
+                <h3 class="category-title">Certificate</h3>
+            </a>
+
+            <a href="https://signer.apptesters.org" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/lTsgRAG.png" alt="Action Icon">
+                </div>
+                <h3 class="category-title">Sign IPA</h3>
+            </a>
+
+            <a href="https://www.youtube.com/@NaRatkhmer" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/MruI9MK.png" alt="Horror Icon">
+                </div>
+                <h3 class="category-title">YouTube</h3>
+            </a>
+
+            <a href="www.tiktok.com/@narat.gamming" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/PgDrkVT.png" alt="RPG Icon">
+                </div>
+                <h3 class="category-title">TikTok</h3>
+            </a>
+
+            <a href="https://t.me/naratstore" class="category-card">
+                <div class="category-icon">
+                    <img src="https://i.imgur.com/WAXeFz6.png" alt="Adventure Icon">
+                </div>
+                <h3 class="category-title">Telegram</h3>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NAVIGATION</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Store</a></li>
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Deals</a></li>
+                    <li><a href="#">Community</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>SUPPORT</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CONNECT</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-discord"></i> Error</a></li>
+                    <li><a href="https://t.me/naratstore"><i class="fab fa-telegram"></i> Telegram</a></li>
+                    <li><a href="www.tiktok.com/@narat.gamming"><i class="fab fa-tiktok"></i> tiktok</a></li>
+                    <li><a href="https://www.facebook.com/share/1P4ee9K4Rr/?mibextid=wwXIfr"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="https://www.youtube.com/@NaRatkhmer"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>NEWSLETTER</h3>
+                <p>Subscribe for exclusive deals and updates</p>
+                <form>
+                    <input type="email" placeholder="Your email" style="width: 100%; padding: 10px; margin: 10px 0; background: rgba(0,0,0,0.3); border: 1px solid var(--neon-cyan); color: white;">
+                    <button type="submit" class="cta-button" style="width: 100%;">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 NaratStore.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add parallax effect to hero section
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.pageYOffset;
+                    hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+                });
+            }
+
+            // Add hover effect to game cards
+            const gameCards = document.querySelectorAll('.game-card');
+            gameCards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const x = e.offsetX;
+                    const y = e.offsetY;
+                    const centerX = this.offsetWidth / 2;
+                    const centerY = this.offsetHeight / 2;
+                    
+                    const angleX = (y - centerY) / 10;
+                    const angleY = (centerX - x) / 10;
+                    
+                    this.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
+                });
+            });
+
+            // Add scanline animation
+            function createScanline() {
+                const scanline = document.createElement('div');
+                scanline.className = 'grid-line horizontal';
+                scanline.style.top = Math.random() * 100 + '%';
+                scanline.style.opacity = '0';
+                scanline.style.transition = 'opacity 0.5s ease';
+                document.body.appendChild(scanline);
+                
+                setTimeout(() => {
+                    scanline.style.opacity = '1';
+                }, 100);
+                
+                setTimeout(() => {
+                    scanline.style.opacity = '0';
+                    setTimeout(() => {
+                        scanline.remove();
+                    }, 500);
+                }, 1000);
+            }
+            
+            setInterval(createScanline, 2000);
+            
+            // Add random glitch effect to logo
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                setInterval(() => {
+                    if (Math.random() > 0.9) {
+                        logo.style.textShadow = '0 0 10px ' + (Math.random() > 0.5 ? 'var(--neon-cyan)' : 'var(--neon-purple)');
+                        setTimeout(() => {
+                            logo.style.textShadow = 'var(--text-glow)';
+                        }, 100);
+                    }
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
