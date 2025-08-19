@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Store - Mod</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #3367d6;
+            --text-color: #ffffff;
+            --light-text: #bbbbbb;
+            --background: #1a73e8;
+            --card-bg: #2d7df6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            width: 40%;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: 100%;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--text-color);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .app-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-image img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .app-info {
+            padding: 15px;
+        }
+
+        .app-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .app-developer {
+            color: var(--light-text);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .app-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .app-rating {
+            color: #ffb300;
+        }
+
+        .install-btn {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .install-btn:hover {
+            background-color: #e8f0fe;
+        }
+
+        .category-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .category-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            color: var(--light-text);
+        }
+
+        .category-tab.active {
+            border-bottom: 3px solid white;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                width: 60%;
+            }
+            
+            .apps-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-container {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">App Store</div>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search apps...">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="header-row">
+            <h1>Free Mod</h1>
+        </div>
+        
+        <div class="category-tabs">
+            <div class="category-tab active">App</div>
+            <div class="category-tab"></div>
+            <div class="category-tab"></div>
+            <div class="category-tab"></div>
+        </div>
+        
+        <div class="apps-grid" id="appsGrid">
+            <div class="app-card" data-name="photo editor pro" data-category="tools">
+                <div class="app-image">
+                    <img src="https://i.imgur.com/G9R0J55.png" alt="Photo Editor icon">
+                </div>
+                <div class="app-info">
+                    <div class="app-title">FREE FIRE MAX</div>
+                    <div class="app-developer">Ios & No ban</div>
+                    <div class="app-stats">
+                        <div class="app-rating">★★★★☆</div>
+                        <div class="app-downloads">1K+</div>
+                    </div>
+                    <a href="narat4.html" class="install-btn">Install</a>
+                </div>
+            </div>
+            
+            <div class="app-card" data-name="fitness tracker" data-category="health">
+                <div class="app-image">
+                    <img src="https://i.imgur.com/G9R0J55.png" alt="Fitness Tracker icon">
+                </div>
+                <div class="app-info">
+                    <div class="app-title">FREEFIRE MAX</div>
+                    <div class="app-developer">Ios & No ban</div>
+                    <div class="app-stats">
+                        <div class="app-rating">★★★★★</div>
+                        <div class="app-downloads">2K+</div>
+                    </div>
+                    <a href="narat4.html" class="install-btn">Install</a>
+                </div>
+            </div>
+            
+            <div class="app-card" data-name="language learning" data-category="education">
+                <div class="app-image">
+                    <img src="https://i.imgur.com/G9R0J55.png" alt="Language Learning icon">
+                </div>
+                <div class="app-info">
+                    <div class="app-title">FREEFIRE MAX</div>
+                    <div class="app-developer">Ios & Noban</div>
+                    <div class="app-stats">
+                        <div class="app-rating">★★★☆☆</div>
+                        <div class="app-downloads">5K+</div>
+                    </div>
+                    <a href="narat4.html" class="install-btn">Install</a>
+                </div>
+            </div>
+            
+            <div class="app-card" data-name="music player" data-category="music">
+                <div class="app-image">
+                    <img src="https://i.imgur.com/G9R0J55.png" alt="Music Player icon">
+                </div>
+                <div class="app-info">
+                    <div class="app-title">FREEFIRE MAX</div>
+                    <div class="app-developer">Ios & Noban</div>
+                    <div class="app-stats">
+                        <div class="app-rating">★★★★☆</div>
+                        <div class="app-downloads">10K+</div>
+                    </div>
+                    <a href="narat4.html" class="install-btn">Install</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.category-tab');
+            const appsGrid = document.getElementById('appsGrid');
+            const appCards = document.querySelectorAll('.app-card');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    const category = this.textContent.toLowerCase();
+                    
+                    // Filter apps by category
+                    appCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category.toLowerCase()) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                appCards.forEach(card => {
+                    const appName = card.dataset.name.toLowerCase();
+                    const appTitle = card.querySelector('.app-title').textContent.toLowerCase();
+                    const appDeveloper = card.querySelector('.app-developer').textContent.toLowerCase();
+                    
+                    if (appName.includes(searchTerm) || 
+                        appTitle.includes(searchTerm) || 
+                        appDeveloper.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Install button functionality
+            const installButtons = document.querySelectorAll('.install-btn');
+            
+            installButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const appTitle = this.closest('.app-card').querySelector('.app-title').textContent;
+                    console.log(`Installing ${appTitle} from ${this.href}`);
+                    // In a real app, you would navigate to the href or use it for download
+                });
+            });
+        });
+    </script>
+</body>
+</html>
