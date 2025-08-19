@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="NaratStore official website">
+    <meta name="keywords" content="NaratStore, official, website, esign, free, download, keyfree, scib, trollstore">
+    <meta name="author" content="NaratStore official">
+    <meta name="robots" content="index, follow">
+    
+    <title>NaratStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dangrek&family=Montserrat:wght@400;700&family=Moul&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* style.css */
+
+        /* Define new color variables with a fresh Blue/Gold color scheme */
+        :root {
+            --primary-color: #0d47a1; /* Deep Blue primary */
+            --primary-light: #42a5f5; /* Lighter Blue */
+            --secondary-color: #546e7a; /* Blue Grey for secondary text */
+            --accent-color: #ffc107; /* Gold accent */
+            --accent-light: #ffeb3b; /* Lighter Gold */
+            --background-color: #e3f2fd; /* Light Blue background */
+            --card-background: #ffffff;
+            --text-color: #212121; /* Darker text */
+            --header-text-color: #ffffff;
+            --vip-badge-bg: var(--accent-color); /* Gold for VIP */
+            --vip-badge-text: #212121; /* Dark text on VIP badge */
+            --icon-accent-color: var(--primary-color); /* Deep Blue for specific icons */
+            --progress-fill-color: var(--accent-color); /* Gold for progress bars */
+            --navigation-active: var(--primary-color); /* Deep Blue for active nav */
+            --navigation-inactive: #90a4ae; /* Light Blue Grey for inactive nav */
+            --banner-dot-active: var(--primary-color); /* Deep Blue for active dots */
+            --banner-dot-inactive: #b0bec5; /* Light Blue Grey for inactive dots */
+            --card-shadow: 0 4px 8px rgba(0,0,0,0.08); /* Softer shadow */
+            --hover-color: #1565c0; /* Darker Blue for hover states */
+            --arrow-bg: #bbdefb; /* Light Blue for arrow background */
+            --arrow-hover-bg: #90caf9; /* Slightly darker Blue for arrow hover */
+        }
+
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: var(--header-text-color);
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .box-logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--card-background);
+            margin-right: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .store-name h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .vip-badge {
+            background-color: var(--vip-badge-bg);
+            color: var(--vip-badge-text);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .notification {
+            font-size: 24px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .notification a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .notification:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- Card Styles --- */
+        .card {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        .card-scib-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-scib {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            margin-right: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border-radius: 12px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .card-trollstore h2 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .card-trollstore p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+
+        .data-usage {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+
+        .data-usage span:last-child a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            color: var(--icon-accent-color);
+        }
+        .data-usage span:last-child a:hover {
+            transform: scale(1.1);
+            color: var(--hover-color);
+        }
+
+        .section-title {
+            margin: 24px 0 12px 0;
+            padding: 0 16px;
+            color: var(--secondary-color);
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 16px;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-title a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .section-title a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+
+        /* --- Esign Box Styles --- */
+        .box-esign {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .box-esign:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+        }
+
+        .esign {
+            display: flex;
+            align-items: center;
+        }
+
+        .icom-esign {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            margin-right: 16px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--header-text-color);
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+            padding: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+        
+        .home-esign {
+            flex-grow: 1;
+        }
+
+        .home-esign h1 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .home-esign p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .home-esign p span {
+        color: var(--icon-accent-color);
+        margin-right: 5px;
+        display: flex;
+        align-items: center;
+        }
+
+        .arow-esign {
+            font-size: 24px;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .arow-esign a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--arrow-bg);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .arow-esign a:hover {
+            background-color: var(--arrow-hover-bg);
+            transform: scale(1.1);
+        }
+
+        .arow-esign i {
+            color: var(--icon-accent-color);
+            font-size: 18px;
+        }
+
+        /* --- Banner Styles --- */
+        .banner {
+            margin: 16px 0;
+            padding: 0 16px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            height: 180px;
+            box-sizing: border-box;
+        }
+
+        .banner-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+            margin: 0 -16px;
+        }
+
+        .banner-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            padding: 0 16px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--banner-dot-inactive);
+            margin: 0 6px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .dot.active {
+            background-color: var(--banner-dot-active);
+            transform: scale(1.3);
+        }
+
+        .banner-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0.8;
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+        }
+
+        .banner-arrow:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .banner-arrow i {
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+
+        .arrow-left {
+            left: 26px;
+        }
+
+        .arrow-right {
+            right: 26px;
+        }
+
+        /* --- Navigation Styles --- */
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-background);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+            border-top: 1px solid #E0E0E0;
+            z-index: 10;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: var(--navigation-inactive);
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease;
+            padding: 5px 10px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-2px);
+            color: var(--navigation-active);
+        }
+        .nav-item:hover .nav-icon {
+            color: var(--navigation-active);
+        }
+
+
+        .nav-item.active {
+            color: var(--navigation-active);
+        }
+
+        .nav-item.active .nav-icon {
+            color: var(--navigation-active);
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+            color: var(--navigation-inactive);
+            transition: color 0.3s ease;
+        }
+        .telegram-icon i { color: #005eff; }
+        .facebook-icon i { color: #0091ff; }
+        .youtube-icon i { color: #ff0000; }
+        .instagram-icon i { color: #ba179c; }
+
+        .nav-item.active .nav-icon i,
+        .nav-item:hover .nav-icon i {
+            color: var(--navigation-active);
+        }
+
+        /* --- Utility & Misc Styles --- */
+        .khmer-text {
+            font-family: 'Moul', 'Dangrek', 'Arial', sans-serif;
+        }
+
+        .card-scib img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            transition: transform 0.2s ease;
+        }
+
+        .card-scib img:hover {
+            transform: scale(1.1);
+        }
+
+        .icom-esign img {
+            width: 100%;
+            height: 100%;
+            max-width: 100px;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(255, 193, 7, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+        }
+
+        .new-item {
+            position: relative;
+            overflow: visible;
+        }
+
+        .new-item::after {
+            content: 'NEW';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: var(--vip-badge-text);
+            font-size: 10px;
+            padding: 3px 6px;
+            border-radius: 10px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        /* --- Responsive Styles (Desktop / Wider Screens) --- */
+        @media (min-width: 768px) {
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 32px;
+            }
+
+            .header {
+                padding: 16px 32px;
+            }
+
+            .banner {
+                height: 300px;
+                padding: 0;
+                margin: 24px auto;
+                width: 100%;
+            }
+            .banner-container {
+                margin: 0;
+            }
+            .banner-slide {
+                padding: 0;
+            }
+            .banner img {
+                border-radius: 14px;
+            }
+            .arrow-left {
+                left: 15px;
+            }
+            .arrow-right {
+                right: 15px;
+            }
+
+            .esign-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                padding: 0 16px;
+            }
+
+            .box-esign {
+                margin: 0;
+            }
+
+            .data-plan-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                padding: 0 16px;
+            }
+
+            .card {
+                margin: 0;
+            }
+
+            .section-title {
+                padding: 0 16px;
+                margin: 32px 0 16px 0;
+            }
+            .section-title::after {
+                left: 16px;
+            }
+
+            .navigation {
+                max-width: 1200px;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 10px 10px 0 0;
+                box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .banner {
+                height: 350px;
+            }
+        }
+    </style>
+    <link rel="icon" href="https://i.imgur.com/BRGkG8P.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/BRGkG8P.png">
+</head>
+<body>
+    <div class="header">
+        <div class="box-logo">
+            <div class="logo">
+                <img src="https://i.imgur.com/4lXAxRQ.png" alt="logo">
+            </div>
+            <div class="store-name">
+                <h1>NaratStore</h1>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="main-content">
+        <div class="banner first-banner">
+            <div class="banner-container">
+                <div class="banner-slide">
+                    <img src="https://i.imgur.com/RuUPhRc.png" alt="Promotion Banner 1">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://i.imgur.com/THfJ0Ll.png" alt="Promotion Banner 2">
+                </div>
+                <div class="banner-slide">
+                    <img src="https://i.imgur.com/THfJ0Ll.png" alt="Promotion Banner 3">
+                </div>
+                 <div class="banner-slide">
+                    <img src="https://i.imgur.com/Vxg6iKP.png" alt="Promotion Banner 4">
+                </div>
+                 <div class="banner-slide">
+                     <img src="https://i.imgur.com/Vxg6iKP.png" alt="Promotion Banner 5">
+                </div>
+            </div>
+            <div class="banner-arrow arrow-left"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="banner-arrow arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="dots-container"></div>
+        </div>
+
+        <div class="section-title">
+            <span>ESIGN</span>
+            <a href="#" class="khmer-text"></a>
+        </div>
+
+        <div class="esign-grid">
+            <div class="box-esign new-item">
+                <div class="esign">
+                    <div class="icom-esign">
+                      <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                        <h1>Esign</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span> 
+                            @ Globle Takeoff Inc Co,Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="narat1.html" target="_blank">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                        <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Esign</h1>
+                        <p class="khmer-text">
+                             <span><i class=""></i></span>@Vietnam Co,Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://tinyurl.com/74ebuctv" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Esign</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span>@Beijing Esensoft Co.Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="narat1.html" target="_blank">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Esign</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span>@China Co,Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://tinyurl.com/74ebuctv" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Esign</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span>@Vietnam Co,Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="narat1.html" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/aiZ7Qqz.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Esign</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span>@Viettle Co,Ltd
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="narat1.html" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/DIU3Knw.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Mod FreeFire</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span>No Ban
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="narat2.html" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span>IPA</span>
+            <a href="#" class="khmer-text"></a>
+        </div>
+        <div class="esign-grid">
+            <div class="box-esign new-item">
+                <div class="esign">
+                    <div class="icom-esign">
+                      <img src="https://i.imgur.com/flhfUsl.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                        <h1>TrollStore</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span> 
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://tinyurl.com/3eyb5etu" target="_blank">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                        <img src="https://i.imgur.com/D203y1H.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Dopamine</h1>
+                        <p class="khmer-text">
+                             <span><i class=""></i></span> 
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://release-assets.githubusercontent.com/github-production-release-asset/595813523/ddc98010-e401-4553-856d-b61b1ab6aa5a?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-14T08%3A58%3A07Z&rscd=attachment%3B+filename%3DDopamine.ipa&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-14T07%3A57%3A48Z&ske=2025-08-14T08%3A58%3A07Z&sks=b&skv=2018-11-09&sig=yYAHWUAVfngcCyyXCy3nGDQfij9LXT35uU0%2BE%2FznxC8%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NTE1OTg0NSwibmJmIjoxNzU1MTU5NTQ1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.0NAbZDttqf5gUx-a-1EBfeZmk4kcDVHygyVG_7ZMvCg&response-content-disposition=attachment%3B%20filename%3DDopamine.ipa&response-content-type=application%2Foctet-stream" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/FAphNWj.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>mugunghwa</h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span> 
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://release-assets.githubusercontent.com/github-production-release-asset/537584043/627ee839-1c65-4177-9e3b-b9780e2c2fd5?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-14T08%3A55%3A56Z&rscd=attachment%3B+filename%3DMugunghwa.ipa&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-14T07%3A55%3A02Z&ske=2025-08-14T08%3A55%3A56Z&sks=b&skv=2018-11-09&sig=MrBCJx39MjfuAEGLlS%2BEWesVJHDm3HcdCovUU7P15s0%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NTE1ODgxNSwibmJmIjoxNzU1MTU4NTE1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.D5SxSiPMo2jVPkZwwb1UG4AnUaiTgcWXXxu8E-8uH7c&response-content-disposition=attachment%3B%20filename%3DMugunghwa.ipa&response-content-type=application%2Foctet-stream" target="_blank">
+                            <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             <div class="box-esign">
+                <div class="esign">
+                    <div class="icom-esign">
+                       <img src="https://i.imgur.com/2q0E61B.png" alt="Esign Icon">
+                    </div>
+                    <div class="home-esign">
+                         <h1>Sileo<h1>
+                        <p class="khmer-text">
+                            <span><i class=""></i></span> 
+                        </p>
+                    </div>
+                    <div class="arow-esign">
+                        <a href="https://release-assets.githubusercontent.com/github-production-release-asset/186243031/50671393-f03c-4418-b6be-fb27f39f5bc1?sp=r&sv=2018-11-09&sr=b&spr=https&se=2025-08-14T08%3A47%3A05Z&rscd=attachment%3B+filename%3Dorg.coolstar.sileo_2.5.1_iphoneos-arm.deb&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2025-08-14T07%3A46%3A47Z&ske=2025-08-14T08%3A47%3A05Z&sks=b&skv=2018-11-09&sig=Y%2Fu4%2BKXsp2fR3MFunYhTirn1U9lTDaih%2FPjnXEHZNvk%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc1NTE1OTQwNSwibmJmIjoxNzU1MTU5MTA1LCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.1QGfDFmeV7t-cQjqSCw9R1lygQctUthtHOEuo_WnImo&response-content-disposition=attachment%3B%20filename%3Dorg.coolstar.sileo_2.5.1_iphoneos-arm.deb&response-content-type=application%2Foctet-stream" target="_blank">
+                             <i class="fa-solid fa-download fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+        <div style="height: 80px;"></div>
+
+    </div>
+
+    <div class="navigation">
+        <a href="https://t.me/naratstore" class="nav-item active">
+            <div class="nav-icon telegram-icon"><i class="fa-brands fa-telegram"></i></div>
+            <span class="khmer-text">telegram</span>
+        </a>
+        <a href="https://www.facebook.com/share/19n45k26eE/?mibextid=wwXIfr" class="nav-item">
+            <div class="nav-icon facebook-icon"><i class="fa-brands fa-facebook"></i></div>
+            <span class="khmer-text">facebook</span>
+        </a>
+        <a href="https://www.youtube.com/@NaRat-Store" class="nav-item">
+            <div class="nav-icon youtube-icon"><i class="fa-brands fa-youtube"></i></div>
+            <span>youtube</span>
+        </a>
+        <a href="https://www.youtube.com/@NaRat-Store" class="nav-item">
+            <div class="nav-icon instagram-icon"><i class="fa-brands fa-instagram"></i></div>
+            <span class="khmer-text">instagram</span>
+        </a>
+    </div>
+
+    <script>
+        'use strict';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function initializeSlider(bannerElement, instanceName) {
+                const bannerContainer = bannerElement.querySelector('.banner-container');
+                const slides = bannerElement.querySelectorAll('.banner-slide');
+                const dotsContainer = bannerElement.querySelector('.dots-container');
+                const arrowLeft = bannerElement.querySelector('.arrow-left');
+                const arrowRight = bannerElement.querySelector('.arrow-right');
+                const totalSlides = slides.length;
+
+                if (!bannerContainer || totalSlides === 0) {
+                    if (dotsContainer) dotsContainer.style.display = 'none';
+                    if (arrowLeft) arrowLeft.style.display = 'none';
+                    if (arrowRight) arrowRight.style.display = 'none';
+                    return;
+                }
+
+                let currentSlide = 0;
+                let sliderInterval = null;
+                let dots = [];
+
+                if (dotsContainer) {
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        dot.setAttribute('data-index', i);
+                        if (i === 0) {
+                            dot.classList.add('active');
+                        }
+                        dot.addEventListener('click', function() {
+                            const slideIndex = parseInt(this.getAttribute('data-index'));
+                            if (!isNaN(slideIndex)) {
+                                updateSlider(slideIndex);
+                                resetInterval();
+                            }
+                        });
+                        dotsContainer.appendChild(dot);
+                    }
+                    dots = dotsContainer.querySelectorAll('.dot');
+                }
+
+                function updateSlider(index) {
+                    if (isNaN(index) || index < 0 || index >= totalSlides) {
+                        index = 0;
+                    }
+                    bannerContainer.style.transform = `translateX(-${index * 100}%)`;
+                    if (dots.length > 0) {
+                        dots.forEach(dot => dot.classList.remove('active'));
+                        if (dots[index]) {
+                            dots[index].classList.add('active');
+                        }
+                    }
+                    currentSlide = index;
+                }
+
+                function startInterval() {
+                    clearInterval(sliderInterval);
+                    sliderInterval = null;
+                    if (totalSlides > 1) {
+                        sliderInterval = setInterval(() => {
+                            let nextSlide = (currentSlide + 1) % totalSlides;
+                            updateSlider(nextSlide);
+                        }, 3000);
+                    } else {
+                        if(arrowLeft) arrowLeft.style.display = 'none';
+                        if(arrowRight) arrowRight.style.display = 'none';
+                        if(dotsContainer) dotsContainer.style.display = 'none';
+                    }
+                }
+
+                function resetInterval() {
+                    startInterval();
+                }
+
+                if (arrowLeft) {
+                    arrowLeft.addEventListener('click', () => {
+                        let prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                        updateSlider(prevSlide);
+                        resetInterval();
+                    });
+                }
+
+                if (arrowRight) {
+                    arrowRight.addEventListener('click', () => {
+                        let nextSlide = (currentSlide + 1) % totalSlides;
+                        updateSlider(nextSlide);
+                        resetInterval();
+                    });
+                }
+                
+                bannerElement.addEventListener('mouseenter', () => {
+                    if (sliderInterval) {
+                        clearInterval(sliderInterval);
+                    }
+                });
+
+                bannerElement.addEventListener('mouseleave', () => {
+                    resetInterval();
+                });
+
+                updateSlider(0);
+                startInterval();
+            }
+
+            const allBanners = document.querySelectorAll('.banner');
+            if (allBanners.length > 0) {
+                allBanners.forEach((banner, index) => {
+                    const bannerName = banner.classList.contains('first-banner') ? 'Banner-Main' :
+                                     banner.classList.contains('second-banner') ? 'Banner-DataPlans' :
+                                     `Banner-${index + 1}`;
+                    try {
+                        initializeSlider(banner, bannerName);
+                    } catch (error) {
+                        console.error(`CRITICAL ERROR during initialization of ${bannerName}:`, error);
+                    }
+                });
+            }
+
+            const navItems = document.querySelectorAll('.navigation .nav-item');
+            if (navItems.length > 0) {
+                navItems.forEach(item => {
+                    item.addEventListener('click', function(event) {
+                        navItems.forEach(i => i.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+
+                const activeNavItem = document.querySelector('.navigation .nav-item.active');
+                if (!activeNavItem && navItems.length > 0) {
+                    navItems[0].classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
