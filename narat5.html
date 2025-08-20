@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narat - Office</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .login-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 25px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo i {
+            font-size: 50px;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h1 {
+            color: #1e3c72;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .login-header p {
+            color: #5a7394;
+            font-size: 16px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e3c72;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #c2d6ff;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            border-color: #2a5298;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.2);
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .login-button:hover {
+            background: #1e3c72;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #5a7394;
+        }
+        
+        .login-footer a {
+            color: #2a5298;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+            font-weight: 500;
+            padding: 10px;
+            background: #ffebee;
+            border-radius: 5px;
+        }
+        
+        .success-message {
+            color: #2ecc71;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+            font-weight: 500;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 5px;
+        }
+        
+        .redirect-info {
+            text-align: center;
+            margin-top: 15px;
+            color: #5a7394;
+            font-size: 14px;
+        }
+        
+        /* Telegram Section Styles */
+        .telegram-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .telegram-section h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .telegram-section p {
+            color: #5a7394;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .telegram-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: #2a96d4;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .telegram-button:hover {
+            background: #1c81bc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .telegram-button i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 500px) {
+            .login-card, .telegram-section {
+                padding: 25px;
+            }
+            
+            .login-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <i class="fas fa-lock"></i>
+            </div>
+            
+            <div class="login-header">
+                <h1>Login</h1>
+                <p>Please fill in the username and passwords correctly.</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" value="">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" value="">
+                </div>
+                
+                <button type="submit" class="login-button">Login</button>
+                
+                <div id="errorMessage" class="error-message">
+                    Invalid username or password. Please try again.
+                </div>
+                
+                <div id="errorMessage" class="success-message">
+                    Login successful!
+                </div>
+                
+                <div class="redirect-info">
+                   
+                </div>
+            </form>
+            
+            <div class="login-footer">
+                <p><a href="#">Reset here</a></p>
+            </div>
+        </div>
+        
+        <!-- Telegram Section -->
+        <div class="telegram-section">
+            <h3>Join Our Telegram Community</h3>
+            <p>Get the latest updates, tips, and exclusive content by joining our Telegram channel. Connect with other members!</p>
+            <a href="https://t.me/example" target="_blank" class="telegram-button">
+                <i class="fab fa-telegram"></i> Join Telegram
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Hide messages initially
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Check credentials
+            if (username === 'Narat' && password === '1111') {
+                // Successful login
+                successMessage.style.display = 'block';
+                
+                // Redirect to dashboard after 2 seconds
+                setTimeout(function() {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                // Failed login
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
