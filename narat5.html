@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Access</title>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Main Body & Background */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #001f3f, #003366, #004080);
+      color: white;
+    }
+
+    /* Main Container */
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 191, 255, 0.3);
+      width: 90%;
+      max-width: 350px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(0, 191, 255, 0.2);
+      animation: fadeIn 1s ease-in-out;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Headings and Paragraphs */
+    h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    /* Action Buttons */
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(90deg, #0077b6, #0096c7);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 10px 0;
+      width: 100%;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 119, 182, 0.4);
+    }
+
+    /* Specific button styles */
+    .telegram-btn {
+      background: linear-gradient(90deg, #0077b6, #0096c7);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.5);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .btn:hover::before {
+      left: 0;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      background: rgba(255, 255, 255, 0.2);
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: #00c6ff;
+      transition: width 0.5s;
+    }
+
+    /* Unlock Button */
+    .unlock-btn {
+      background: #4a4a4a;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      cursor: not-allowed;
+      transition: 0.3s;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .unlock-btn.enabled {
+      background: linear-gradient(90deg, #00b4d8, #0077b6);
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
+    }
+
+    .unlock-btn.enabled:hover {
+      transform: scale(1.03);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Unlock Content</h2>
+    <p>Complete the actions below to unlock</p>
+
+    <button class="btn" id="youtubeButton">YouTube</button>
+    <button class="btn telegram-btn" id="telegramButton">Join Telegram</button>
+
+    <div class="progress-bar">
+      <div id="progress" class="progress"></div>
+    </div>
+
+    <button id="unlockButton" class="unlock-btn" disabled> Unlock</button>
+  </div>
+
+  <script>
+    const youtubeButton = document.getElementById('youtubeButton');
+    const telegramButton = document.getElementById('telegramButton');
+    const unlockButton = document.getElementById('unlockButton');
+    const progressBar = document.getElementById('progress');
+
+    let isYouTubeClicked = false;
+    let isTelegramClicked = false;
+
+    youtubeButton.addEventListener('click', function () {
+      isYouTubeClicked = true;
+      window.open('https://www.youtube.com/@Jincallword', '_blank');
+      checkProgress();
+    });
+
+    telegramButton.addEventListener('click', function () {
+      isTelegramClicked = true;
+      window.open('https://t.me/gameappios', '_blank');
+      checkProgress();
+    });
+
+    function checkProgress() {
+      if (isYouTubeClicked && isTelegramClicked) {
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 5;
+          progressBar.style.width = progress + '%';
+
+          if (progress >= 100) {
+            clearInterval(interval);
+            unlockButton.disabled = false;
+            unlockButton.classList.add('enabled');
+            unlockButton.textContent = '✅ Unlock Success';
+          }
+        }, 100);
+      }
+    }
+
+    unlockButton.addEventListener('click', function () {
+      if (!this.disabled) {
+        window.location.href = 'https://sangsharetv.com/chia-se-id-apple-free-sangsharetv/'; // Replace with your desired URL
+      }
+    });
+  </script>
+</body>
+</html>
