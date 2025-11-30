@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlock Premium Access</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-blue: #2563eb;
@@ -32,7 +33,7 @@
             justify-content: center;
             /* Main Blue Background with Grid Pattern */
             background-color: #3b82f6;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
@@ -68,7 +69,8 @@
 
         .header i {
             font-size: 24px;
-            color: #fbbf24; /* Gold tint for the lock icon */
+            color: #fbbf24;
+            /* Gold tint for the lock icon */
             text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
         }
 
@@ -103,14 +105,14 @@
 
         .btn-blue {
             background: var(--primary-gradient);
-            border-top: 1px solid rgba(255,255,255,0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .btn-locked {
             background: var(--locked-gradient);
             cursor: not-allowed;
             color: rgba(255, 255, 255, 0.8);
-            border-top: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Progress Status Section */
@@ -153,49 +155,262 @@
             gap: 5px;
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 30px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes unlockGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(34, 197, 94, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 40px rgba(34, 197, 94, 0.8);
+            }
+        }
+
+        /* Apply animations */
+        .card {
+            animation: fadeIn 0.8s ease-out, slideUp 0.8s ease-out;
+        }
+
+        .header {
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+
+        .header i {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .action-btn {
+            animation: slideUp 1s ease-out both;
+        }
+
+        .action-btn:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .action-btn:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .action-btn:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        .action-btn:hover {
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        .status-container {
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+
+        .btn-blue:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-unlocked {
+            background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+            cursor: pointer;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            animation: unlockGlow 2s ease-in-out infinite;
+        }
+
+        .btn-unlocked:hover {
+            transform: scale(1.02);
+        }
+
+        .status-completed {
+            color: #22c55e !important;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="card">
         <div class="header">
-            <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-lock" id="headerIcon"></i>
             <h2>Unlock Premium Access</h2>
         </div>
 
-        <a href="https://t.me/gameappios" class="action-btn btn-blue">
+        <a href="https://t.me/gameappios" class="action-btn btn-blue" id="articleBtn" target="_blank">
             <i class="fa-solid fa-book-open"></i>
             Read an Article
         </a>
 
-        <a href="https://t.me/gameappios" class="action-btn btn-blue">
+        <a href="https://t.me/gameappios" class="action-btn btn-blue" id="blogBtn" target="_blank">
             <i class="fa-solid fa-newspaper"></i>
             Read a Blog
         </a>
 
-        <div class="action-btn btn-locked">
+        <button class="action-btn btn-locked" id="unlockBtn" disabled>
             <i class="fa-solid fa-lock"></i>
             Locked
-        </div>
+        </button>
 
         <div class="status-container">
             <div class="status-title">Progress Status</div>
-            
+
             <div class="status-row">
                 <span class="label">Article Read:</span>
-                <span class="value">
+                <span class="value" id="articleStatus">
                     <i class="fa-solid fa-hourglass-half"></i> Pending
                 </span>
             </div>
-            
+
             <div class="status-row">
                 <span class="label">Ad Watched:</span>
-                <span class="value">
+                <span class="value" id="blogStatus">
                     <i class="fa-solid fa-hourglass-half"></i> Pending
                 </span>
             </div>
         </div>
     </div>
 
+    <script>
+        let articleRead = false;
+        let blogRead = false;
+
+        const articleBtn = document.getElementById('articleBtn');
+        const blogBtn = document.getElementById('blogBtn');
+        const unlockBtn = document.getElementById('unlockBtn');
+        const articleStatus = document.getElementById('articleStatus');
+        const blogStatus = document.getElementById('blogStatus');
+        const headerIcon = document.getElementById('headerIcon');
+
+        // Track article click
+        articleBtn.addEventListener('click', function () {
+            setTimeout(() => {
+                articleRead = true;
+                articleStatus.innerHTML = '<i class="fa-solid fa-check-circle"></i> Completed';
+                articleStatus.classList.add('status-completed');
+                checkUnlock();
+            }, 1000);
+        });
+
+        // Track blog click
+        blogBtn.addEventListener('click', function () {
+            setTimeout(() => {
+                blogRead = true;
+                blogStatus.innerHTML = '<i class="fa-solid fa-check-circle"></i> Completed';
+                blogStatus.classList.add('status-completed');
+                checkUnlock();
+            }, 1000);
+        });
+
+        // Check if both tasks are completed
+        function checkUnlock() {
+            if (articleRead && blogRead) {
+                unlockBtn.disabled = false;
+                unlockBtn.classList.remove('btn-locked');
+                unlockBtn.classList.add('btn-unlocked');
+                unlockBtn.innerHTML = '<i class="fa-solid fa-unlock"></i> Download Now';
+                headerIcon.className = 'fa-solid fa-unlock';
+
+                // Add click handler for download
+                unlockBtn.addEventListener('click', downloadFile);
+            }
+        }
+
+        // Download file function
+        function downloadFile() {
+            const downloadUrl = 'https://api.khoindvn.eu.org/k1Ycos';
+
+            // Show downloading status
+            unlockBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Downloading...';
+            unlockBtn.style.animation = 'none';
+
+            // Create a temporary anchor element to trigger download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = 'premium_file'; // You can change the filename
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Update button after download starts
+            setTimeout(() => {
+                unlockBtn.innerHTML = '<i class="fa-solid fa-check-circle"></i> Downloaded!';
+                unlockBtn.style.background = 'linear-gradient(180deg, #10b981 0%, #059669 100%)';
+            }, 1500);
+        }
+    </script>
+
 </body>
+
 </html>
