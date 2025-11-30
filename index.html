@@ -1,185 +1,318 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purat - Esign</title>
-    <meta name="description" content="Professional profile and tools by Purat. Download Esign and certificates.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Tumadam MOD Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #eff6ff; /* Light blue background */
+            --card-bg: #ffffff;
+            --text-main: #1f2937;
+            --text-sub: #6b7280;
+            --primary-blue: #3b82f6; /* Bright blue */
+            --button-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* Mobile width constraint */
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+
+        /* --- Header / Navigation --- */
+        .nav-bar {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+        }
+        .menu-icon {
+            font-size: 24px;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* --- Profile Section (Image 2) --- */
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: var(--button-shadow);
+        }
+
+        .greeting {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 5px 0;
+        }
+
+        .verified-badge {
+            color: var(--primary-blue);
+            font-size: 18px;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #7c3aed; /* Purple tint from image */
+            margin-bottom: 20px;
+        }
+
+        /* Social Icons */
+        .social-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            box-shadow: var(--button-shadow);
+            transition: transform 0.2s;
+        }
+        
+        .social-btn:active { transform: scale(0.95); }
+        .bg-telegram { background-color: #229ED9; }
+        .bg-facebook { background-color: #1877F2; }
+        .bg-youtube { background-color: #FF0000; }
+
+        /* Main Link Buttons */
+        .link-card {
+            background: var(--card-bg);
+            padding: 15px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        
+        .link-card:active { background-color: #f9fafb; transform: scale(0.98); }
+        
+        .link-icon {
+            background-color: #60a5fa;
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* --- Download List Section (Image 1) --- */
+        .download-section {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .app-card {
+            display: flex;
+            align-items: center;
+            background-color: #e0e7ff; /* Slightly darker/purple tint per image */
+            padding: 10px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 12px;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .app-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 2px;
+        }
+
+        .app-meta {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .download-btn {
+            width: 40px;
+            height: 40px;
+            background-color: #60a5fa;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(96, 165, 250, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 380px) {
+            .app-name { font-size: 13px; }
+            .username { font-size: 20px; }
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Header Navigation -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon" id="themeIcon"></i>
-                </button>
-                <button class="menu-btn" id="menuBtn" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-content">
-            <button class="close-menu" id="closeMenu">
-                <i class="fas fa-times"></i>
-            </button>
-            <ul class="mobile-nav-links">
-                <li><a href="#profile"><i class="fas fa-user"></i> Profile</a></li>
-                <li><a href="#esign"><i class="fas fa-signature"></i> Esign</a></li>
-                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-            </ul>
+    <div class="container">
+        
+        <div class="nav-bar">
+            <i class="fa-solid fa-bars menu-icon"></i>
         </div>
+
+        <section class="profile-section">
+            <img src="images/esign.pn" alt="Profile" class="avatar">
+            
+            <div class="greeting">Hi, I am</div>
+            <div class="username">
+                Tumadam MOD 
+                <i class="fa-solid fa-certificate verified-badge"></i> </div>
+            <div class="bio">Besides, I am also the top 1 hacker!</div>
+
+            <div class="social-row">
+                <a href="#" class="social-btn bg-telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="social-btn bg-facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="social-btn bg-youtube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+            <div style="width: 100%;">
+                <a href="#" class="link-card">
+                    <span>Website Tiện Ích</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square link-icon"></i>
+                </a>
+                <a href="#" class="link-card">
+                    <span>Kho IPA+Game Hack IOS</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square link-icon"></i>
+                </a>
+                <a href="#" class="link-card">
+                    <span>Telegram Channel</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square link-icon"></i>
+                </a>
+            </div>
+        </section>
+
+        <hr style="border: 0; height: 1px; background: #d1d5db; margin: 30px 0;">
+
+        <section class="download-section">
+            <h2 class="section-title">Tải Game</h2>
+
+            <div class="app-card">
+                <img src="images/esign.png" alt="Icon" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">ESign</div>
+                    <div class="app-meta"></div>
+                </div>
+                <a href="unlock.html"" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <div class="app-card">
+                <img src="images/esign.png" alt="Icon" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">ESign</div>
+                    <div class="app-meta"></div>
+                </div>
+                <a href="#" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <div class="app-card">
+                <img src="images/esign.png" alt="Icon" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">ESign</div>
+                    <div class="app-meta"></div>
+                </div>
+                <a href="#" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+             <div class="app-card">
+                <img src="images/esign.png" alt="Icon" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">ESign</div>
+                    <div class="app-meta"></div>
+                </div>
+                <a href="#" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+            <div class="app-card">
+                <img src="images/esign.png" alt="Icon" class="app-icon">
+                <div class="app-info">
+                    <div class="app-name">ESign</div>
+                    <div class="app-meta"></div>
+                </div>
+                <a href="#" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                </a>
+            </div>
+
+        </section>
+
     </div>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Profile Section -->
-        <section class="profile-section" id="profile">
-            <div class="profile-card">
-                <div class="profile-avatar">
-                    <img src="images/purat.jpg" alt="Purat Avatar" id="avatarImg">
-                    <div class="avatar-ring"></div>
-                </div>
-                <h1 class="profile-name">Hi, I am<br><span class="highlight">Purat</span> <i
-                        class="fas fa-check-circle verified"></i></h1>
-                <p class="profile-subtitle"></p>
-
-                <div class="social-links">
-                    <a href="https://t.me/gameappios" class="social-btn telegram" aria-label="Telegram">
-                        <i class="fab fa-telegram-plane"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@genzercode" class="social-btn tiktok" aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@Puratsite" class="social-btn youtube" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links Card -->
-            <div class="quick-card">
-                <div class="quick-card-content">
-                    <div class="quick-item">
-                        <h3>Install DNS Profile</h3>
-                        <a href="https://github.com/esigncert/khoindvn/releases/download/DNS/signed_khoindvn.mobileconfig" class="quick-btn dns-btn">
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                    <div class="quick-item">
-                        <h3>Download Certificate</h3>
-                        <a href="https://limewire.com/d/NFmhe#1qcLNZU6py" class="quick-btn cert-btn">
-                            <i class="fas fa-certificate"></i>
-                        </a>
-                    </div>
-                    <div class="quick-item">
-                        <h3>Warning</h3>
-                        <a href="warning.html" class="quick-btn warning-btn">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Esign Section -->
-        <section class="section" id="esign">
-            <h2 class="section-title">Esign</h2>
-            <div class="items-list">
-                <div class="item-card">
-                    <img src="images/esign.jpg" alt="Esign Icon" class="item-icon">
-                    <div class="item-info">
-                        <h3>Esign</h3>
-                        <p class="item-desc"></p>
-                    </div>
-                    <a href="https://api.khoindvn.eu.org/k1Ycos" class="item-download-btn">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-                <div class="item-card">
-                    <img src="images/esign.jpg" alt="Esign Icon" class="item-icon">
-                    <div class="item-info">
-                        <h3>Esign</h3>
-                        <p class="item-desc"></p>
-                    </div>
-                    <a href="https://api.khoindvn.eu.org/k1Ycos" class="item-download-btn">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-                <div class="item-card">
-                    <img src="images/esign.jpg" alt="Esign Icon" class="item-icon">
-                    <div class="item-info">
-                        <h3>Esign</h3>
-                        <p class="item-desc">  </p>
-                    </div>
-                    <a href="https://api.khoindvn.eu.org/k1Ycos" class="item-download-btn">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-                <div class="item-card">
-                    <img src="images/esign.jpg" alt="Esign Icon" class="item-icon">
-                    <div class="item-info">
-                        <h3>Esign</h3>
-                        <p class="item-desc"></p>
-                    </div>
-                    <a href="https://api.khoindvn.eu.org/k1Ycos" class="item-download-btn">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-                <div class="item-card">
-                    <img src="images/esign.jpg" alt="Esign Icon" class="item-icon">
-                    <div class="item-info">
-                        <h3>Esign </h3>
-                        <p class="item-desc"></p>
-                    </div>
-                    <a href="https://api.khoindvn.eu.org/k1Ycos" class="item-download-btn">
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-                
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer Section (About) -->
-        <section class="footer-section" id="about">
-            <div class="footer-wave">
-                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path
-                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
-                    </path>
-                </svg>
-            </div>
-
-            <div class="footer-content">
-                <div class="footer-item">
-                    <div class="footer-icon footer-avatar">
-                        <img src="images/purat.jpg" alt="Purat" class="footer-profile-img">
-                    </div>
-                    <p>About me</p>
-                    <p class="footer-description">
-                        Hi my name is Purat i'm 15 years old and i'm from Cambodia.
-                    </p>
-                </div>
-
-                <p class="copyright">© Copyright Purat 2025</p>
-            </div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
 </body>
-
-
 </html>
