@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Premium Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-gradient: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+            --locked-gradient: linear-gradient(180deg, #9ca3af 0%, #6b7280 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-white: #ffffff;
+            --text-yellow: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Main Blue Background with Grid Pattern */
+            background-color: #3b82f6;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(180deg, #2563eb 0%, #1e40af 100%);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 30px;
+            border-radius: 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;
+        }
+
+        /* Header Section */
+        .header {
+            margin-bottom: 30px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header i {
+            font-size: 24px;
+            color: #fbbf24; /* Gold tint for the lock icon */
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        .header h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-blue {
+            background: var(--primary-gradient);
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-locked {
+            background: var(--locked-gradient);
+            cursor: not-allowed;
+            color: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Progress Status Section */
+        .status-container {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-title {
+            color: var(--text-white);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .status-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .value {
+            color: var(--text-yellow);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">
+            <i class="fa-solid fa-lock"></i>
+            <h2>Unlock Premium Access</h2>
+        </div>
+
+        <a href="https://t.me/gameappios" class="action-btn btn-blue">
+            <i class="fa-solid fa-book-open"></i>
+            Read an Article
+        </a>
+
+        <a href="https://t.me/gameappios" class="action-btn btn-blue">
+            <i class="fa-solid fa-newspaper"></i>
+            Read a Blog
+        </a>
+
+        <div class="action-btn btn-locked">
+            <i class="fa-solid fa-lock"></i>
+            Locked
+        </div>
+
+        <div class="status-container">
+            <div class="status-title">Progress Status</div>
+            
+            <div class="status-row">
+                <span class="label">Article Read:</span>
+                <span class="value">
+                    <i class="fa-solid fa-hourglass-half"></i> Pending
+                </span>
+            </div>
+            
+            <div class="status-row">
+                <span class="label">Ad Watched:</span>
+                <span class="value">
+                    <i class="fa-solid fa-hourglass-half"></i> Pending
+                </span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
